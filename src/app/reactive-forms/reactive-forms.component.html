@@ -31,6 +31,19 @@
 
       </div>
 
+      <div>
+        <label>Address</label>
+        <button class="btn btn-success btn-sm ml-2"> Add </button>
+        <div class="row">
+          <div class="form-group col">
+            <input type="text" class="form-control" name="street" placeholder="Street">
+          </div>
+          <div class="form-group col">
+            <input type="text" class="form-control" name="city" placeholder="City">
+          </div>
+        </div>
+      </div>
+
       <div class="form-group">
         <button class="btn btn-primary">Submit</button>
       </div>
@@ -42,7 +55,7 @@
 <div class="card">
   <div class="card-body">
     Form: {{ form.value | json}} <br>
-    Form Status: {{form.status}} <br> 
+    Form Status: {{form.status}} <br>
     Password Status: {{form.get('account.password').status}} <br>
     Account Status: {{form.get('account').status}}
   </div>

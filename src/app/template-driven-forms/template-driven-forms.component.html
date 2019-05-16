@@ -4,11 +4,13 @@
     <form novalidate #f="ngForm">
       <div class="form-group">
         <label for="firstName" class="col-form-label">First Name</label>
-        <input type="text" class="form-control" id="firstName" [ngModel]="name.first" name="first" placeholder="First name">
+        <input type="text" class="form-control" id="firstName" [ngModel]="name.first" name="first"
+          placeholder="First name">
       </div>
       <div class="form-group">
         <label for="lastName" class="col-form-label">Last Name</label>
-        <input type="email" class="form-control" id="lastName" [ngModel]="name.last" name="last" placeholder="Last name">
+        <input type="email" class="form-control" id="lastName" [ngModel]="name.last" name="last"
+          placeholder="Last name">
       </div>
 
       <div ngModelGroup="account" password-matcher #account="ngModelGroup">
@@ -17,7 +19,8 @@
           <input type="email" class="form-control" ngModel name="username" placeholder="Username">
         </div>
         <div class="form-group">
-          <input type="email" class="form-control" ngModel name="password" placeholder="Password" required #password="ngModel">
+          <input type="email" class="form-control" ngModel name="password" placeholder="Password" required
+            #password="ngModel">
         </div>
         <div class="form-group">
           <input type="email" class="form-control" ngModel name="confirm" placeholder="Confirm Password" required>
@@ -29,6 +32,21 @@
         <br>
         <app-switch-control name="newsletter" ngModel></app-switch-control>
       </div>
+      
+      <div>
+        <label>Address</label>
+        <button class="btn btn-success btn-sm ml-2"> Add </button>
+        <div class="row">
+          <div class="form-group col">
+            <input type="text" class="form-control" name="street" placeholder="Street">
+          </div>
+          <div class="form-group col">
+            <input type="text" class="form-control" name="city" placeholder="City">
+          </div>
+        </div>
+      </div>
+
+
 
       <div class="form-group">
         <button class="btn btn-primary">Submit</button>
