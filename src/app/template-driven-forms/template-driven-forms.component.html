@@ -32,16 +32,18 @@
         <br>
         <app-switch-control name="newsletter" ngModel></app-switch-control>
       </div>
-      
-      <div>
+
+      <div ngModelGroup="addresses">
         <label>Address</label>
-        <button class="btn btn-success btn-sm ml-2"> Add </button>
-        <div class="row">
-          <div class="form-group col">
-            <input type="text" class="form-control" name="street" placeholder="Street">
-          </div>
-          <div class="form-group col">
-            <input type="text" class="form-control" name="city" placeholder="City">
+        <button class="btn btn-success btn-sm ml-2" (click)="addAddress()"> Add </button>
+        <div *ngFor="let address of addresses; let i = index;">
+          <div class="row" [ngModelGroup]="i">
+            <div class="form-group col">
+              <input type="text" class="form-control" [ngModel]="addresses[i].street" name="street" placeholder="Street">
+            </div>
+            <div class="form-group col">
+              <input type="text" class="form-control" [ngModel]="addresses[i].city" name="city" placeholder="City">
+            </div>
           </div>
         </div>
       </div>

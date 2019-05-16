@@ -24,6 +24,10 @@ export class PasswordMatcher{
 })
 export class TemplateDrivenFormsComponent implements OnInit {
   name;
+  addresses: Array<any> = [
+    {street: 'First', city: 'Vizag'},
+    {street: 'Second', city: 'HYD'}
+  ];
   constructor() { 
     this.name = {first: 'John', last: 'K'}
   }
@@ -31,4 +35,7 @@ export class TemplateDrivenFormsComponent implements OnInit {
   ngOnInit() {
   }
 
+  addAddress(){
+    this.addresses.push({});
+  }
 }

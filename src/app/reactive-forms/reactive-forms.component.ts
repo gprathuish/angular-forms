@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl, FormArray } from '@angular/forms';
 
 function passwordMatcher(c: AbstractControl){
   return c.get('password').value === c.get('confirm').value ? null : {'nomatch': true}
@@ -32,7 +32,17 @@ export class ReactiveFormsComponent implements OnInit {
         password: ['', Validators.required],
         confirm: ['', Validators.required],
       }, {validators: passwordMatcher}),      
-      newsletter: ['', Validators.required]
+      newsletter: [''],
+      addresses: this.fb.array([
+        this.fb.group({
+          street: 'First Street',
+          city: 'Vizag'
+        }),
+        this.fb.group({
+          street: 'Second Street',
+          city: 'HYD'
+        })
+      ])
     })
 
     // to set single value in form
@@ -43,6 +53,13 @@ export class ReactiveFormsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  addAddress(){
+    (this.form.get('addresses') as FormArray).push(this.fb.group({
+      street: '',
+      city: ''
+    }))
   }
 
 }
