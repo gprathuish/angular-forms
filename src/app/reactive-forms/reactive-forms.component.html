@@ -1,40 +1,34 @@
 <div class="card">
   <div class="card-body">
-    <h4>Template Driven Forms</h4>
-    <form novalidate>
+    <h4>Reactive Forms</h4>
+    <form novalidate [formGroup]="form">
       <div class="form-group">
         <label for="firstName" class="col-form-label">First Name</label>
-        <input type="text" class="form-control" id="firstName" name="first" placeholder="First name">
+        <input type="text" class="form-control" id="firstName" formControlName="first" placeholder="First name">
       </div>
       <div class="form-group">
         <label for="lastName" class="col-form-label">Last Name</label>
-        <input type="email" class="form-control" id="lastName" name="last" placeholder="Last name">
+        <input type="email" class="form-control" id="lastName" formControlName="last" placeholder="Last name">
       </div>
 
-      <div>
+      <div formGroupName="account">
         <label class="col-form-label">Account</label>
         <div class="form-group">
-          <input type="email" class="form-control" name="username" placeholder="Username">
+          <input type="email" class="form-control" formControlName="username" placeholder="Username">
         </div>
         <div class="form-group">
-          <input type="email" class="form-control" name="password" placeholder="Password">
+          <input type="email" class="form-control" formControlName="password" placeholder="Password">
         </div>
         <div class="form-group">
-          <input type="email" class="form-control" name="confirm" placeholder="Confirm Password">
+          <input type="email" class="form-control" formControlName="confirm" placeholder="Confirm Password">
         </div>
       </div>
 
       <div class="form-group">
         <label>Would you like to receive a newsletter?</label>
         <br>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" value="yes" name="newsletter" id="inlineRadio1" value="option1">
-          <label class="form-check-label" for="inlineRadio1">1</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" value="no" name="newsletter" id="inlineRadio2" value="option2">
-          <label class="form-check-label" for="inlineRadio2">2</label>
-        </div>
+        <app-switch-control formControlName="newsletter"></app-switch-control>
+
       </div>
 
       <div class="form-group">
@@ -46,5 +40,10 @@
 
 <br>
 <div class="card">
-  <div class="card-body"></div>
+  <div class="card-body">
+    Form: {{ form.value | json}} <br>
+    Form Status: {{form.status}} <br> 
+    Password Status: {{form.get('account.password').status}} <br>
+    Account Status: {{form.get('account').status}}
+  </div>
 </div>

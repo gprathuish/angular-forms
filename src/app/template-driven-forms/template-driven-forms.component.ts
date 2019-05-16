@@ -1,4 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Directive } from '@angular/core';
+import { NG_VALIDATORS, AbstractControl } from '@angular/forms';
+
+function passwordMatcher(c: AbstractControl){
+  if(!c.get('password') || !c.get('confirm')) return null;
+  return c.get('password').value === c.get('confirm').value ? null : {'nomatch': true}
+}
+
+@Directive({
+  selector: '[password-matcher]',
+  providers: [
+    {provide: NG_VALIDATORS, multi: true, useValue: passwordMatcher}
+  ]
+
+})
+export class PasswordMatcher{
+
+}
 
 @Component({
   selector: 'app-template-driven-forms',
@@ -6,8 +23,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./template-driven-forms.component.css']
 })
 export class TemplateDrivenFormsComponent implements OnInit {
-
-  constructor() { }
+  name;
+  constructor() { 
+    this.name = {first: 'John', last: 'K'}
+  }
 
   ngOnInit() {
   }
